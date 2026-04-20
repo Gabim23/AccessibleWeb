@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  ACCESIBILIDAD WCAG 2.2 — Criterio 3.1.1 (Nivel A)
+  El atributo lang="es" identifica el idioma principal de la
+  página para que los lectores de pantalla pronuncien el
+  contenido correctamente.
+  ============================================================
+-->
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <!--
+    WCAG 2.2 — Criterio 1.4.4 (Nivel AA): Cambiar Tamaño del Texto
+    viewport con initial-scale=1 asegura que el texto puede
+    escalarse hasta un 200% sin pérdida de contenido.
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO & Metadatos -->
+  <meta name="description" content="Descubre Santorini, la joya del Egeo. Playas volcánicas, pueblos blancos y atardeceres únicos en Grecia. Planifica tu visita y envía una postal." />
+  <meta name="keywords" content="Santorini, Grecia, turismo, viaje, Cicládas, Oia, caldera, viaje" />
+  <meta name="author" content="Turismo Santorini" />
+
+  <!-- Open Graph (accesibilidad social) -->
+  <meta property="og:title" content="Santorini — La Joya del Egeo" />
+  <meta property="og:description" content="Descubre la magia de Santorini: acantilados volcánicos, pueblos blancos y el atardecer más bello de Grecia." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_ES" />
+
+  <title>Santorini — La Joya del Egeo | Turismo Grecia</title>
+
+  <!-- Google Fonts: tipografía moderna y legible -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+
+  <!--
+    ============================================================
+    WCAG 2.2 — Criterio 2.4.1 (Nivel A): Saltar Bloques
+    El enlace "Saltar al contenido principal" permite a los
+    usuarios de teclado omitir la navegación repetitiva.
+    Se hace visible al recibir el foco (:focus-visible).
+    ============================================================
+  -->
+  <a href="#contenido-principal" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- ======================================================
+       HEADER: Encabezado principal del sitio
+       WCAG 2.2 — landmark <header> para navegación asistida
+       ====================================================== -->
+  <header class="site-header" role="banner">
+    <div class="header-inner container">
+
+      <!-- Logo / nombre del sitio -->
+      <a href="#" class="logo" aria-label="Santorini - Ir al inicio">
+        <span class="logo-icon" aria-hidden="true">✦</span>
+        <span class="logo-text">Santorini</span>
+      </a>
+
+      <!-- Botón hamburguesa para móvil -->
+      <!--
+        WCAG 2.2 — Criterio 4.1.2 (Nivel A): Nombre, Función, Valor
+        aria-expanded comunica el estado del menú a tecnologías asistivas.
+        aria-controls vincula el botón con el menú que controla.
+      -->
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="main-nav"
+        aria-label="Abrir menú de navegación"
+      >
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+
+      <!-- Navegación principal -->
+      <!--
+        WCAG 2.2 — Criterio 2.4.3 (Nivel A): Orden del Foco
+        El <nav> con role="navigation" y aria-label crea un
+        landmark identificable. El orden DOM sigue el orden visual.
+      -->
+      <nav id="main-nav" class="main-nav" role="navigation" aria-label="Navegación principal">
+        <ul class="nav-list" role="list">
+          <li><a href="#sobre-santorini" class="nav-link">Sobre Santorini</a></li>
+          <li><a href="#galeria" class="nav-link">Galería</a></li>
+          <li><a href="#multimedia" class="nav-link">Multimedia</a></li>
+          <li><a href="#gastronomia" class="nav-link">Gastronomía</a></li>
+          <li><a href="#postal" class="nav-link nav-link--cta">Enviar Postal</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- ======================================================
+       MAIN: Contenido principal de la página
+       WCAG 2.2 — landmark <main> con id para el skip link
+       ====================================================== -->
+  <main id="contenido-principal" tabindex="-1">
+
+    <!-- ====================================================
+         SECCIÓN HERO
+         ==================================================== -->
+    <section class="hero" aria-labelledby="hero-titulo">
+      <div class="hero-overlay" aria-hidden="true"></div>
+
+      <!--
+        WCAG 2.2 — Criterio 1.1.1 (Nivel A): Contenido No Textual
+        La imagen de fondo es decorativa (CSS background-image),
+        pero si fuera <img>, requeriría alt descriptivo.
+        El contenido real es texto, accesible por defecto.
+      -->
+      <div class="hero-content container">
+        <p class="hero-eyebrow">Cicládas, Grecia</p>
+        <!--
+          WCAG 2.2 — Criterio 1.4.3 (Nivel AA): Contraste (Mínimo)
+          Texto blanco #FFFFFF sobre fondo oscuro semi-transparente
+          supera la ratio de contraste requerida de 4.5:1.
+          Ratio estimada: > 7:1 (WCAG AAA).
+        -->
+        <h1 id="hero-titulo" class="hero-title">
+          Santorini<br />
+          <em>La Joya del Egeo</em>
+        </h1>
+        <p class="hero-subtitle">
+          Acantilados volcánicos, pueblos blancos y el atardecer más espectacular del Mediterráneo.
+        </p>
+        <div class="hero-actions">
+          <a href="#sobre-santorini" class="btn btn--primary">Explorar</a>
+          <a href="#postal" class="btn btn--outline">Enviar Postal</a>
+        </div>
+      </div>
+
+      <!-- Indicador de scroll -->
+      <div class="scroll-indicator" aria-hidden="true">
+        <span class="scroll-dot"></span>
+      </div>
+    </section>
+
+    <!-- ====================================================
+         SECCIÓN: SOBRE SANTORINI (Texto descriptivo)
+         WCAG 2.2 — Criterio 1.3.1: Información y Relaciones
+         Estructura semántica con <section> y encabezados jerárquicos
+         ==================================================== -->
+    <section id="sobre-santorini" class="section section--light" aria-labelledby="sobre-titulo">
+      <div class="container">
+
+        <header class="section-header">
+          <p class="section-eyebrow">Descubre</p>
+          <h2 id="sobre-titulo" class="section-title">Sobre Santorini</h2>
+          <p class="section-lead">
+            Una isla de leyenda esculpida por el fuego de los volcanes y pulida por milenios de historia griega.
+          </p>
+        </header>
+
+        <div class="about-grid">
+
+          <article class="about-card" aria-labelledby="card-historia-titulo">
+            <!--
+              WCAG 2.2 — Criterio 1.1.1 (Nivel A): Contenido No Textual
+              Todos los <img> tienen atributo alt con descripción
+              funcional y contextual del contenido de la imagen.
+            -->
+            <figure class="about-card__figure">
+              <img
+                src="https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=600&q=80"
+                alt="Vista panorámica de Oia, Santorini: casas blancas con cúpulas azules escalonadas sobre el acantilado volcánico sobre el Mar Egeo"
+                class="about-card__img"
+                width="600"
+                height="400"
+                loading="lazy"
+              />
+              <figcaption class="about-card__caption">
+                El famoso pueblo de Oia visto desde el camino a Fira
+              </figcaption>
+            </figure>
+            <div class="about-card__body">
+              <h3 id="card-historia-titulo" class="about-card__title">Historia y Origen</h3>
+              <p>
+                Santorini, conocida en la antigüedad como <strong>Thera</strong>, es el resultado de
+                una de las erupciones volcánicas más colosales de la historia: la erupción Minoica
+                del 1600 a.C. Ese cataclismo dio forma a la característica caldera que hoy contemplamos
+                con asombro y que algunos historiadores vinculan al mito de la <em>Atlántida</em>.
+              </p>
+              <p>
+                Habitada desde el tercer milenio antes de Cristo, la isla fusiona capas de civilizaciones:
+                minoica, doria, romana, veneciana y otomana, todas ellas visibles en su arquitectura,
+                su gastronomía y sus tradiciones.
+              </p>
+            </div>
+          </article>
+
+          <article class="about-card about-card--reverse" aria-labelledby="card-pueblos-titulo">
+            <figure class="about-card__figure">
+              <img
+                src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=600&q=80"
+                alt="Iglesia de cúpula azul icónica de Santorini con campanario blanco bajo un cielo despejado en el pueblo de Oia"
+                class="about-card__img"
+                width="600"
+                height="400"
+                loading="lazy"
+              />
+              <figcaption class="about-card__caption">
+                Las célebres iglesias de cúpula azul de Oia
+              </figcaption>
+            </figure>
+            <div class="about-card__body">
+              <h3 id="card-pueblos-titulo" class="about-card__title">Pueblos y Arquitectura</h3>
+              <p>
+                La arquitectura cicládica de Santorini es mundialmente reconocible: edificios encalados
+                en blanco inmaculado, cúpulas de color azul cobalto y ventanas con arcos que se recortan
+                sobre el azul profundo del Egeo. Los pueblos de <strong>Oia</strong>, <strong>Fira</strong>
+                e <strong>Imerovigli</strong> ofrecen los rincones más fotogénicos de la isla.
+              </p>
+              <p>
+                La disposición escalonada de las construcciones sobre el borde del cráter no es solo
+                estética: es una respuesta inteligente al terreno volcánico que ha definido la identidad
+                visual de toda la región de las Cícladas.
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Datos destacados (estadísticas) -->
+        <div class="stats-bar" role="list" aria-label="Datos destacados de Santorini">
+          <div class="stat" role="listitem">
+            <span class="stat__number" aria-label="Tres mil quinientos años de historia">3.500</span>
+            <span class="stat__label">Años de Historia</span>
+          </div>
+          <div class="stat" role="listitem">
+            <span class="stat__number" aria-label="Diez playas únicas">10+</span>
+            <span class="stat__label">Playas Únicas</span>
+          </div>
+          <div class="stat" role="listitem">
+            <span class="stat__number" aria-label="Caldera de doce kilómetros">12 km</span>
+            <span class="stat__label">Caldera Volcánica</span>
+          </div>
+          <div class="stat" role="listitem">
+            <span class="stat__number" aria-label="Doscientos veinticinco días de sol al año">225</span>
+            <span class="stat__label">Días de Sol/Año</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================
+         SECCIÓN: GALERÍA DE IMÁGENES
+         WCAG 2.2 — Criterios 1.1.1, 1.3.1
+         ==================================================== -->
+    <section id="galeria" class="section section--dark" aria-labelledby="galeria-titulo">
+      <div class="container">
+
+        <header class="section-header section-header--light">
+          <p class="section-eyebrow">Imágenes</p>
+          <h2 id="galeria-titulo" class="section-title">Galería Fotográfica</h2>
+          <p class="section-lead">
+            Cada rincón de Santorini es una fotografía que no requiere filtros.
+          </p>
+        </header>
+
+        <!--
+          WCAG 2.2 — Criterio 1.3.1: role="list" explícito para
+          listas que usan CSS display:grid (algunos navegadores
+          eliminan la semántica de lista con ciertos estilos).
+        -->
+        <ul class="gallery-grid" role="list" aria-label="Galería de fotografías de Santorini">
+
+          <li class="gallery-item gallery-item--feature">
+            <figure>
+              <img
+                src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=900&q=80"
+                alt="Atardecer dorado sobre la caldera de Santorini: el sol se funde con el horizonte entre siluetas de casas blancas y la extensión del mar Egeo"
+                class="gallery-img"
+                width="900"
+                height="600"
+                loading="lazy"
+              />
+              <figcaption class="gallery-caption">El atardecer más famoso del mundo, desde Oia</figcaption>
+            </figure>
+          </li>
+
+          <li class="gallery-item">
+            <figure>
+              <img
+                src="https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?w=500&q=80"
+                alt="Playa Roja de Santorini: acantilados de roca volcánica rojiza sobre una pequeña cala con aguas turquesas y bañistas"
+                class="gallery-img"
+                width="500"
+                height="400"
+                loading="lazy"
+              />
+              <figcaption class="gallery-caption">La icónica Playa Roja volcánica</figcaption>
+            </figure>
+          </li>
+
+          <li class="gallery-item">
+            <figure>
+              <img
+                src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=500&q=80"
+                alt="Callejón blanco de Santorini con flores de buganvilla fucsia colgando sobre los arcos de las puertas en el casco antiguo de Fira"
+                class="gallery-img"
+                width="500"
+                height="400"
+                loading="lazy"
+              />
+              <figcaption class="gallery-caption">Callejones de Fira en flor</figcaption>
+            </figure>
+          </li>
+
+          <li class="gallery-item">
+            <figure>
+              <img
+                src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80"
+                alt="Piscina de aguas infinitas de un hotel boutique de lujo en Santorini, con vistas directas a la caldera y el horizonte del Egeo al amanecer"
+                class="gallery-img"
+                width="500"
+                height="400"
+                loading="lazy"
+              />
+              <figcaption class="gallery-caption">Piscinas infinitas sobre la caldera</figcaption>
+            </figure>
+          </li>
+
+          <li class="gallery-item">
+            <figure>
+              <img
+                src="https://images.unsplash.com/photo-1545247181-516773cae754?w=500&q=80"
+                alt="Burros blancos descendiendo por las escaleras tradicionales del puerto de Fira (Skala), usados históricamente para el transporte de mercancías"
+                class="gallery-img"
+                width="500"
+                height="400"
+                loading="lazy"
+              />
+              <figcaption class="gallery-caption">Las escaleras históricas del puerto de Fira</figcaption>
+            </figure>
+          </li>
+
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- ====================================================
+         SECCIÓN: MULTIMEDIA (Audio y Vídeo)
+         WCAG 2.2 — Criterio 1.2 (Nivel A/AA): Medios Tempodependientes
+         ==================================================== -->
+    <section id="multimedia" class="section section--light" aria-labelledby="multimedia-titulo">
+      <div class="container">
+
+        <header class="section-header">
+          <p class="section-eyebrow">Experiencia Sensorial</p>
+          <h2 id="multimedia-titulo" class="section-title">Multimedia</h2>
+          <p class="section-lead">
+            Cierra los ojos y escucha el Egeo. Abre los ojos y vive Santorini.
+          </p>
+        </header>
+
+        <div class="multimedia-grid">
+
+          <!-- ——— REPRODUCTOR DE SONIDO ——— -->
+          <article class="media-card" aria-labelledby="audio-titulo">
+            <div class="media-card__header">
+              <span class="media-card__icon" aria-hidden="true">♪</span>
+              <h3 id="audio-titulo" class="media-card__title">Sonidos del Egeo</h3>
+            </div>
+            <div class="media-card__player">
+              <!--
+                WCAG 2.2 — Criterio 1.2.1 (Nivel A): Solo Audio
+                El elemento <audio> con controls proporciona controles
+                nativos del navegador, accesibles por teclado.
+                Se debe proporcionar una transcripción o descripción
+                del contenido sonoro (ver bloque siguiente).
+
+                WCAG 2.2 — Criterio 1.2.2 (Nivel A): Subtítulos (Grabados)
+                Para audio puro: transcripción textual alternativa.
+              -->
+              <audio
+                id="audio-egeo"
+                controls
+                class="audio-player"
+                aria-describedby="audio-descripcion"
+              >
+                <!--
+                  Nota: Reemplaza el src con el archivo de audio real.
+                  Formatos múltiples para máxima compatibilidad.
+                -->
+                <source src="media/audio/sonidos-egeo.mp3" type="audio/mpeg" />
+                <source src="media/audio/sonidos-egeo.ogg" type="audio/ogg" />
+                <p>
+                  Tu navegador no soporta el elemento de audio HTML5.
+                  <a href="media/audio/sonidos-egeo.mp3" download>Descarga el audio aquí</a>.
+                </p>
+              </audio>
+            </div>
+
+            <!--
+              WCAG 2.2 — Criterio 1.2.1 (Nivel A): Solo Audio (grabado)
+              Transcripción textual del contenido del audio como
+              alternativa accesible. Obligatorio para Nivel A.
+            -->
+            <div class="transcript" id="audio-descripcion">
+              <h4 class="transcript__title">
+                <button
+                  class="transcript__toggle"
+                  aria-expanded="false"
+                  aria-controls="audio-transcript-content"
+                  id="audio-transcript-btn"
+                >
+                  <span>Descripción y transcripción del audio</span>
+                  <span class="transcript__chevron" aria-hidden="true">▾</span>
+                </button>
+              </h4>
+              <div
+                id="audio-transcript-content"
+                class="transcript__content"
+                role="region"
+                aria-labelledby="audio-transcript-btn"
+                hidden
+              >
+                <p>
+                  <strong>Duración:</strong> 3 minutos 45 segundos.<br />
+                  <strong>Descripción:</strong> Grabación ambiental realizada en la orilla de la
+                  Playa Perivolos, en el sur de Santorini. Se escuchan:
+                </p>
+                <ul>
+                  <li><time datetime="PT0S">0:00</time> — Olas rompiendo suavemente sobre la arena volcánica negra.</li>
+                  <li><time datetime="PT45S">0:45</time> — Gaviotas al fondo y brisa marina.</li>
+                  <li><time datetime="PT1M30S">1:30</time> — Una barca de pesca alejándose del puerto (motor a baja potencia).</li>
+                  <li><time datetime="PT2M15S">2:15</time> — Conversación en griego a baja voz entre pescadores.</li>
+                  <li><time datetime="PT3M">3:00</time> — Retorno al sonido de las olas hasta el final.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- ——— REPRODUCTOR DE VÍDEO ——— -->
+          <article class="media-card" aria-labelledby="video-titulo">
+            <div class="media-card__header">
+              <span class="media-card__icon" aria-hidden="true">▶</span>
+              <h3 id="video-titulo" class="media-card__title">Vídeo: Un Día en Santorini</h3>
+            </div>
+            <div class="media-card__player">
+              <!--
+                WCAG 2.2 — Criterio 1.2.2 (Nivel AA): Subtítulos (Grabados)
+                El elemento <track kind="subtitles"> proporciona subtítulos
+                sincronizados para usuarios con discapacidad auditiva.
+
+                WCAG 2.2 — Criterio 1.2.3 (Nivel A): Audiodescripción
+                El <track kind="descriptions"> provee audiodescrip ción
+                para usuarios con discapacidad visual.
+
+                WCAG 2.2 — Criterio 1.2.5 (Nivel AA): Audiodescripción
+                (grabado): Audiodescripción para todo el vídeo.
+
+                controls: Controles nativos accesibles por teclado.
+                preload="metadata": Solo carga metadatos para mejorar
+                el rendimiento inicial sin penalizar accesibilidad.
+              -->
+              <video
+                id="video-santorini"
+                controls
+                preload="metadata"
+                class="video-player"
+                aria-describedby="video-descripcion"
+                poster="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800&q=70"
+              >
+                <!-- Reemplaza el src con el archivo de vídeo real -->
+                <source src="media/video/santorini-dia.mp4" type="video/mp4" />
+                <source src="media/video/santorini-dia.webm" type="video/webm" />
+
+                <!--
+                  Subtítulos en español (obligatorio WCAG AA)
+                  Archivo VTT con el texto sincronizado del audio.
+                -->
+                <track
+                  kind="subtitles"
+                  src="media/subtitles/santorini-es.vtt"
+                  srclang="es"
+                  label="Español"
+                  default
+                />
+                <!--
+                  Subtítulos en inglés (alternativa internacional)
+                -->
+                <track
+                  kind="subtitles"
+                  src="media/subtitles/santorini-en.vtt"
+                  srclang="en"
+                  label="English"
+                />
+                <!--
+                  Audiodescripción para usuarios con discapacidad visual
+                  (obligatorio WCAG 2.2 Nivel AA, Criterio 1.2.5)
+                -->
+                <track
+                  kind="descriptions"
+                  src="media/subtitles/santorini-desc.vtt"
+                  srclang="es"
+                  label="Audiodescripción en español"
+                />
+                <p>
+                  Tu navegador no soporta el vídeo HTML5.
+                  <a href="media/video/santorini-dia.mp4" download>Descarga el vídeo aquí</a>.
+                </p>
+              </video>
+            </div>
+
+            <!--
+              WCAG 2.2 — Criterio 1.2.3 (Nivel A): Descripción en audio o alternativa en texto
+              WCAG 2.2 — Criterio 1.2.8 (Nivel AAA): Alternativa en texto (grabado)
+              Transcripción completa del vídeo disponible bajo demanda.
+            -->
+            <div class="transcript" id="video-descripcion">
+              <h4 class="transcript__title">
+                <button
+                  class="transcript__toggle"
+                  aria-expanded="false"
+                  aria-controls="video-transcript-content"
+                  id="video-transcript-btn"
+                >
+                  <span>Transcripción completa del vídeo</span>
+                  <span class="transcript__chevron" aria-hidden="true">▾</span>
+                </button>
+              </h4>
+              <div
+                id="video-transcript-content"
+                class="transcript__content"
+                role="region"
+                aria-labelledby="video-transcript-btn"
+                hidden
+              >
+                <p>
+                  <strong>Título:</strong> Un Día en Santorini<br />
+                  <strong>Duración:</strong> 4 minutos 20 segundos<br />
+                  <strong>Idioma original:</strong> Español con subtítulos disponibles
+                </p>
+                <h5>Transcripción</h5>
+                <p><time datetime="PT0S">[0:00]</time> <em>[Música suave mediterránea de fondo. Imagen de amanecer sobre la caldera.]</em></p>
+                <p><time datetime="PT10S">[0:10]</time> <strong>Narrador:</strong> «Santorini. Hay lugares en el mundo que no necesitan presentación, que hablan solos con el lenguaje universal de la belleza.»</p>
+                <p><time datetime="PT25S">[0:25]</time> <em>[Corte a planos de callejones de Oia, flores de buganvilla, puertas azules.]</em></p>
+                <p><time datetime="PT30S">[0:30]</time> <strong>Narrador:</strong> «Sus calles son un laberinto de cal blanca y azul cobalto donde cada curva esconde una nueva sorpresa.»</p>
+                <p><time datetime="PT1M">  [1:00]</time> <em>[Plano de la Playa Roja, primeros planos de la roca volcánica.]</em></p>
+                <p><time datetime="PT1M5S"> [1:05]</time> <strong>Narrador:</strong> «La Playa Roja, formada por la lava solidificada, es un recordatorio vivo del origen volcánico de esta isla única.»</p>
+                <p><time datetime="PT4M">  [4:00]</time> <em>[Plano final del atardecer sobre la caldera. Fundido a negro.]</em></p>
+                <p><time datetime="PT4M15S">[4:15]</time> <strong>Narrador:</strong> «Santorini. Una vez que la ves, ya nunca podrás olvidarla.»</p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================
+         SECCIÓN: GASTRONOMÍA (Imagen + Texto)
+         ==================================================== -->
+    <section id="gastronomia" class="section section--cream" aria-labelledby="gastro-titulo">
+      <div class="container">
+
+        <div class="gastro-layout">
+          <div class="gastro-text">
+            <p class="section-eyebrow">Sabores</p>
+            <h2 id="gastro-titulo" class="section-title">Gastronomía del Egeo</h2>
+            <p>
+              La cocina de Santorini es un reflejo del suelo volcánico que la nutre. El <strong>tomate
+              cherry santorino</strong>, de sabor incomparablemente intenso por la pobreza mineral
+              del suelo, el <strong>vino Assyrtiko</strong> —blanco mineral y seco nacido de cepas
+              milenarias— y las <strong>habas frescas</strong> son los protagonistas locales.
+            </p>
+            <p>
+              En los restaurantes colgados sobre la caldera, degustar un <em>loukoumades</em>
+              (buñuelo con miel) mientras el sol se hunde en el Egeo es una experiencia para todos
+              los sentidos que ningún viajero debería perderse.
+            </p>
+            <ul class="gastro-list" aria-label="Platos típicos de Santorini">
+              <li><strong>Tomatokeftedes</strong> — Croquetas de tomate santorino</li>
+              <li><strong>Fava</strong> — Puré de habas con aceite de oliva y alcaparras</li>
+              <li><strong>Htapodi</strong> — Pulpo a la brasa</li>
+              <li><strong>Assyrtiko</strong> — Vino blanco volcánico PDO</li>
+              <li><strong>Loukoumades</strong> — Buñuelos con miel de tomillo</li>
+            </ul>
+          </div>
+          <figure class="gastro-figure">
+            <img
+              src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700&q=80"
+              alt="Mesa de restaurante mediterráneo en terraza con vistas al mar: ensalada griega con tomates, pepino y queso feta, vaso de vino blanco y pulpo a la brasa"
+              class="gastro-img"
+              width="700"
+              height="500"
+              loading="lazy"
+            />
+            <figcaption class="gastro-caption">
+              Terraza gastronómica con vistas a la caldera en Imerovigli
+            </figcaption>
+          </figure>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================
+         SECCIÓN: FORMULARIO DE POSTAL
+         WCAG 2.2 — Criterio 1.3.1, 3.3.1, 3.3.2, 4.1.2
+         ==================================================== -->
+    <section id="postal" class="section section--dark" aria-labelledby="postal-titulo">
+      <div class="container">
+
+        <header class="section-header section-header--light">
+          <p class="section-eyebrow">Comparte</p>
+          <h2 id="postal-titulo" class="section-title">Enviar una Postal</h2>
+          <p class="section-lead">
+            Elige una imagen de Santorini y envía tu recuerdo a alguien especial.
+          </p>
+        </header>
+
+        <!--
+          WCAG 2.2 — Criterio 3.3.2 (Nivel A): Etiquetas o instrucciones
+          Instrucción general antes del formulario que explica el formato
+          y los requisitos de los campos.
+        -->
+        <p class="form-instructions" id="form-instructions">
+          Los campos marcados con <span aria-hidden="true">*</span>
+          <span class="sr-only">asterisco</span> son obligatorios.
+        </p>
+
+        <form
+          id="postal-form"
+          class="postal-form"
+          novalidate
+          aria-describedby="form-instructions"
+          aria-labelledby="postal-titulo"
+        >
+
+          <!-- ——— ELECCIÓN DE IMAGEN ——— -->
+          <!--
+            WCAG 2.2 — Criterio 1.3.1 (Nivel A): Información y Relaciones
+            <fieldset> agrupa controles relacionados y <legend> proporciona
+            el nombre accesible del grupo, leído por lectores de pantalla.
+
+            WCAG 2.2 — Criterio 4.1.2 (Nivel A): Nombre, Función, Valor
+            Cada <input type="radio"> está vinculado con su <label>
+            mediante el atributo for/id, asegurando el nombre accesible del control.
+          -->
+          <fieldset class="fieldset" id="imagen-fieldset">
+            <legend class="fieldset__legend">
+              Elige la imagen para tu postal
+              <span aria-hidden="true"> *</span>
+              <span class="sr-only"> (obligatorio)</span>
+            </legend>
+
+            <div class="postcard-options" role="list">
+
+              <!-- Opción 1 -->
+              <div class="postcard-option" role="listitem">
+                <input
+                  type="radio"
+                  id="postal-atardecer"
+                  name="imagen-postal"
+                  value="atardecer"
+                  class="postcard-radio"
+                  required
+                  aria-required="true"
+                />
+                <!--
+                  WCAG 2.2 — Criterio 1.3.1: El <label> está explícitamente
+                  vinculado al <input> mediante el atributo for="postal-atardecer".
+                  El alt de la imagen dentro del label también proporciona
+                  información contextual al usuario de lector de pantalla.
+                -->
+                <label for="postal-atardecer" class="postcard-label">
+                  <img
+                    src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=300&q=80"
+                    alt="Opción de postal: Atardecer dorado sobre la caldera de Santorini con casas blancas en primer plano"
+                    class="postcard-img"
+                    width="300"
+                    height="200"
+                    loading="lazy"
+                  />
+                  <span class="postcard-name">Atardecer en la Caldera</span>
+                </label>
+              </div>
+
+              <!-- Opción 2 -->
+              <div class="postcard-option" role="listitem">
+                <input
+                  type="radio"
+                  id="postal-iglesia"
+                  name="imagen-postal"
+                  value="iglesia"
+                  class="postcard-radio"
+                  aria-required="true"
+                />
+                <label for="postal-iglesia" class="postcard-label">
+                  <img
+                    src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=300&q=80"
+                    alt="Opción de postal: Iglesia de cúpula azul de Oia con campanario blanco contra cielo azul"
+                    class="postcard-img"
+                    width="300"
+                    height="200"
+                    loading="lazy"
+                  />
+                  <span class="postcard-name">Iglesia de Cúpula Azul</span>
+                </label>
+              </div>
+
+              <!-- Opción 3 -->
+              <div class="postcard-option" role="listitem">
+                <input
+                  type="radio"
+                  id="postal-playa"
+                  name="imagen-postal"
+                  value="playa-roja"
+                  class="postcard-radio"
+                  aria-required="true"
+                />
+                <label for="postal-playa" class="postcard-label">
+                  <img
+                    src="https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?w=300&q=80"
+                    alt="Opción de postal: Playa Roja de Santorini con acantilados volcánicos rojizos y aguas turquesas"
+                    class="postcard-img"
+                    width="300"
+                    height="200"
+                    loading="lazy"
+                  />
+                  <span class="postcard-name">Playa Roja Volcánica</span>
+                </label>
+              </div>
+
+              <!-- Opción 4 -->
+              <div class="postcard-option" role="listitem">
+                <input
+                  type="radio"
+                  id="postal-callejon"
+                  name="imagen-postal"
+                  value="callejon"
+                  class="postcard-radio"
+                  aria-required="true"
+                />
+                <label for="postal-callejon" class="postcard-label">
+                  <img
+                    src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=300&q=80"
+                    alt="Opción de postal: Callejón blanco de Santorini con buganvilias fucsia en flor"
+                    class="postcard-img"
+                    width="300"
+                    height="200"
+                    loading="lazy"
+                  />
+                  <span class="postcard-name">Callejones en Flor</span>
+                </label>
+              </div>
+
+            </div>
+
+            <!--
+              WCAG 2.2 — Criterio 3.3.1 (Nivel A): Identificación de Errores
+              El mensaje de error del fieldset se muestra dinámicamente
+              y está vinculado al fieldset mediante aria-describedby (via JS).
+            -->
+            <div
+              id="imagen-error"
+              class="field-error"
+              role="alert"
+              aria-live="assertive"
+              hidden
+            >
+              <span aria-hidden="true">⚠</span>
+              Por favor, selecciona una imagen para tu postal.
+            </div>
+          </fieldset>
+
+          <!-- ——— DATOS DEL DESTINATARIO ——— -->
+          <fieldset class="fieldset">
+            <legend class="fieldset__legend">Datos del destinatario</legend>
+
+            <div class="form-row">
+              <div class="form-group">
+                <!--
+                  WCAG 2.2 — Criterio 1.3.5 (Nivel AA): Identificar Propósito de Entrada
+                  autocomplete="name" ayuda a los gestores de contraseñas y
+                  relleno automático, mejorando la accesibilidad.
+                -->
+                <label for="destinatario-nombre" class="form-label">
+                  Nombre completo
+                  <span aria-hidden="true"> *</span>
+                  <span class="sr-only"> (obligatorio)</span>
+                </label>
+                <input
+                  type="text"
+                  id="destinatario-nombre"
+                  name="destinatario-nombre"
+                  class="form-input"
+                  autocomplete="name"
+                  required
+                  aria-required="true"
+                  aria-describedby="nombre-error"
+                  placeholder="Ej. María García López"
+                />
+                <div id="nombre-error" class="field-error" role="alert" aria-live="assertive" hidden>
+                  <span aria-hidden="true">⚠</span>
+                  El nombre del destinatario es obligatorio.
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="destinatario-email" class="form-label">
+                  Correo electrónico
+                  <span aria-hidden="true"> *</span>
+                  <span class="sr-only"> (obligatorio)</span>
+                </label>
+                <input
+                  type="email"
+                  id="destinatario-email"
+                  name="destinatario-email"
+                  class="form-input"
+                  autocomplete="email"
+                  required
+                  aria-required="true"
+                  aria-describedby="email-error email-hint"
+                  placeholder="ejemplo@correo.com"
+                />
+                <p id="email-hint" class="field-hint">La postal se enviará a este correo electrónico.</p>
+                <div id="email-error" class="field-error" role="alert" aria-live="assertive" hidden>
+                  <span aria-hidden="true">⚠</span>
+                  Por favor, introduce un correo electrónico válido.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="mensaje-postal" class="form-label">
+                Mensaje de la postal
+                <span aria-hidden="true"> *</span>
+                <span class="sr-only"> (obligatorio)</span>
+              </label>
+              <!--
+                WCAG 2.2 — Criterio 1.3.5 (Nivel AA)
+                maxlength y el contador de caracteres informan al
+                usuario de las restricciones del campo.
+              -->
+              <textarea
+                id="mensaje-postal"
+                name="mensaje-postal"
+                class="form-textarea"
+                rows="4"
+                maxlength="300"
+                required
+                aria-required="true"
+                aria-describedby="mensaje-error mensaje-contador"
+                placeholder="Escribe tu mensaje aquí... (máximo 300 caracteres)"
+              ></textarea>
+              <div class="textarea-footer">
+                <div id="mensaje-error" class="field-error" role="alert" aria-live="assertive" hidden>
+                  <span aria-hidden="true">⚠</span>
+                  El mensaje de la postal es obligatorio.
+                </div>
+                <!--
+                  WCAG 2.2 — Criterio 4.1.3 (Nivel AA): Mensajes de Estado
+                  aria-live="polite" anuncia el contador de caracteres
+                  sin interrumpir la lectura en curso.
+                -->
+                <p
+                  id="mensaje-contador"
+                  class="char-counter"
+                  aria-live="polite"
+                  aria-atomic="true"
+                >
+                  0 / 300 caracteres
+                </p>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- ——— DATOS DEL REMITENTE ——— -->
+          <fieldset class="fieldset">
+            <legend class="fieldset__legend">Datos del remitente (tuyo)</legend>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="remitente-nombre" class="form-label">
+                  Tu nombre
+                  <span aria-hidden="true"> *</span>
+                  <span class="sr-only"> (obligatorio)</span>
+                </label>
+                <input
+                  type="text"
+                  id="remitente-nombre"
+                  name="remitente-nombre"
+                  class="form-input"
+                  autocomplete="given-name"
+                  required
+                  aria-required="true"
+                  aria-describedby="remitente-error"
+                  placeholder="Tu nombre"
+                />
+                <div id="remitente-error" class="field-error" role="alert" aria-live="assertive" hidden>
+                  <span aria-hidden="true">⚠</span>
+                  Tu nombre es obligatorio para identificar la postal.
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="remitente-lugar" class="form-label">
+                  Lugar desde donde escribes
+                </label>
+                <input
+                  type="text"
+                  id="remitente-lugar"
+                  name="remitente-lugar"
+                  class="form-input"
+                  autocomplete="address-level2"
+                  placeholder="Ej. Santorini, Grecia"
+                />
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- ——— BOTÓN DE ENVÍO ——— -->
+          <div class="form-submit">
+            <button type="submit" class="btn btn--primary btn--large" id="submit-postal">
+              <span aria-hidden="true">✉</span>
+              Enviar mi Postal
+            </button>
+          </div>
+
+          <!-- Mensaje de éxito (se muestra tras envío) -->
+          <!--
+            WCAG 2.2 — Criterio 4.1.3 (Nivel AA): Mensajes de Estado
+            role="status" y aria-live="polite" anuncian el resultado
+            del envío sin alterar el foco del usuario.
+          -->
+          <div
+            id="form-success"
+            class="form-success"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+            hidden
+          >
+            <span class="success-icon" aria-hidden="true">✓</span>
+            <div>
+              <strong>¡Postal enviada con éxito!</strong>
+              <p>Tu postal de Santorini está en camino hacia su destino.</p>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================================================
+       FOOTER
+       WCAG 2.2 — landmark <footer> con role="contentinfo"
+       ====================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <a href="#" class="logo" aria-label="Santorini - Inicio">
+            <span class="logo-icon" aria-hidden="true">✦</span>
+            <span class="logo-text">Santorini</span>
+          </a>
+          <p class="footer-tagline">La Joya del Egeo, Grecia</p>
+        </div>
+
+        <nav aria-label="Navegación del pie de página">
+          <h3 class="footer-heading">Explorar</h3>
+          <ul class="footer-list" role="list">
+            <li><a href="#sobre-santorini" class="footer-link">Sobre Santorini</a></li>
+            <li><a href="#galeria" class="footer-link">Galería</a></li>
+            <li><a href="#multimedia" class="footer-link">Multimedia</a></li>
+            <li><a href="#gastronomia" class="footer-link">Gastronomía</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-info">
+          <h3 class="footer-heading">Información</h3>
+          <address class="footer-address">
+            <p>
+              <span aria-label="Ubicación">Santorini (Thera)</span><br />
+              <span>Cicládas, Grecia</span><br />
+              <span aria-label="Huso horario">UTC+2 (CEST en verano)</span>
+            </p>
+            <p>
+              <a href="mailto:info@turismo-santorini.gr" class="footer-link">
+                info@turismo-santorini.gr
+              </a>
+            </p>
+          </address>
+        </div>
+
+        <div class="footer-accessibility">
+          <h3 class="footer-heading">Accesibilidad</h3>
+          <p class="footer-text">
+            Este sitio cumple con las pautas
+            <abbr title="Web Content Accessibility Guidelines versión 2.2, Nivel AA">WCAG 2.2</abbr>
+            con nivel de conformidad <strong style="color:var(--color-gold-300)">AA</strong>.
+          </p>
+          <!--
+            REQUISITO PRÁCTICO: Badge oficial W3C de conformidad WCAG 2.2 AA.
+            Enlaza a la página de conformidad del W3C y muestra el logotipo oficial.
+            El atributo alt describe el significado del badge.
+          -->
+          <a
+            href="https://www.w3.org/WAI/WCAG2AA-Conformance"
+            title="Explicación de la Conformidad de Nivel AA de las WCAG 2.2"
+            rel="noopener noreferrer"
+            target="_blank"
+            aria-label="Declaración de conformidad WCAG 2.2 Nivel AA del W3C (se abre en nueva pestaña)"
+            class="wcag-badge-link"
+          >
+            <img
+              src="https://www.w3.org/WAI/WCAG21/wcag2.2AA-blue-v.png"
+              alt="Nivel AA de conformidad con las Pautas de Accesibilidad para el Contenido Web 2.2"
+              width="88"
+              height="31"
+            />
+          </a>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          <small>
+            &copy; <time datetime="2025">2025</time> Turismo Santorini.
+            Contenido con fines educativos. Imágenes vía
+            <a href="https://unsplash.com" rel="noopener noreferrer" target="_blank" class="footer-link" aria-label="Visitar Unsplash (se abre en nueva pestaña)">
+              Unsplash
+            </a>.
+          </small>
+        </p>
+        <!-- Validadores utilizados (requeridos por la práctica) -->
+        <nav aria-label="Herramientas de validación utilizadas" class="validators-nav">
+          <p class="validators-label">Validado con:</p>
+          <ul class="validators-list" role="list">
+            <li><a href="https://validator.w3.org" class="validator-link" rel="noopener noreferrer" target="_blank" aria-label="W3C HTML Validator (nueva pestaña)">W3C HTML</a></li>
+            <li><a href="https://jigsaw.w3.org/css-validator/" class="validator-link" rel="noopener noreferrer" target="_blank" aria-label="W3C CSS Validator (nueva pestaña)">W3C CSS</a></li>
+            <li><a href="https://wave.webaim.org" class="validator-link" rel="noopener noreferrer" target="_blank" aria-label="WAVE Accessibility Evaluator (nueva pestaña)">WAVE</a></li>
+            <li><a href="https://www.tawdis.net" class="validator-link" rel="noopener noreferrer" target="_blank" aria-label="TAW Validador de Accesibilidad (nueva pestaña)">TAW</a></li>
+            <li><a href="https://www.achecker.ca" class="validator-link" rel="noopener noreferrer" target="_blank" aria-label="AChecker Accessibility Checker (nueva pestaña)">AChecker</a></li>
+          </ul>
+        </nav>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
