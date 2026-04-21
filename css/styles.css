@@ -129,6 +129,18 @@
   padding: 0;
 }
 
+/*
+  CORRECCIÓN CRÍTICA: El atributo HTML `hidden` establece display:none
+  en la hoja de estilos del navegador, pero SIN !important. Esto significa
+  que cualquier regla CSS de autor con `display:flex` o `display:grid`
+  lo sobreescribe, haciendo que elementos ocultos (errores, mensaje de
+  éxito del formulario) aparezcan visualmente aunque tengan hidden.
+  Esta regla garantiza que [hidden] siempre tenga efecto.
+*/
+[hidden] {
+  display: none !important;
+}
+
 /* ================================================================
    WCAG 2.2 — Criterio 1.4.12 (Nivel AA): Espaciado del Texto
    El sitio debe seguir siendo usable si el usuario aplica:

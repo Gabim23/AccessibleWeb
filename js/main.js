@@ -193,10 +193,6 @@
   /**
    * Muestra u oculta el mensaje de error de un campo,
    * actualizando también aria-invalid.
-   *
-   * @param {HTMLElement} input   - El campo con error
-   * @param {string}      errorId - ID del elemento de error
-   * @param {boolean}     show    - true para mostrar el error
    */
   function setError(input, errorId, show) {
     const errorEl = document.getElementById(errorId);
@@ -211,33 +207,22 @@
     }
   }
 
-  /**
-   * Valida un campo individual y muestra/oculta su error.
-   * Retorna true si el campo es válido.
-   */
+  /** Valida un campo y muestra/oculta su error. Retorna true si válido. */
   function validateField(input, errorId, validationFn) {
     const isValid = validationFn(input.value);
     setError(input, errorId, !isValid);
     return isValid;
   }
 
-  /**
-   * Valida que se haya seleccionado una imagen para la postal.
-   * Retorna true si algún radio está marcado.
-   */
+  /** Valida que se haya seleccionado una imagen de postal. */
   function validateImageSelection() {
     const radios   = form.querySelectorAll('input[name="imagen-postal"]');
     const errorEl  = document.getElementById('imagen-error');
     const fieldset = document.getElementById('imagen-fieldset');
-
     const anyChecked = Array.from(radios).some(r => r.checked);
 
-    if (errorEl) {
-      errorEl.hidden = anyChecked;
-    }
-
+    if (errorEl)  errorEl.hidden = anyChecked;
     if (fieldset) {
-      // Marcar el fieldset como inválido para lectores de pantalla
       if (!anyChecked) {
         fieldset.setAttribute('aria-invalid', 'true');
         fieldset.setAttribute('aria-describedby', 'imagen-error');
@@ -245,71 +230,64 @@
         fieldset.removeAttribute('aria-invalid');
       }
     }
-
     return anyChecked;
   }
 
-  /* --- Validación en tiempo real (al salir del campo) ---
+  /* --- Validación con seguimiento de campos "tocados" ---
    *
-   * WCAG 2.2 — Criterio 3.3.1 (Nivel A): Validar en blur (no en
-   * input) evita interrumpir al usuario mientras escribe.
+   * CORRECCIÓN: Los errores SOLO se muestran en campos que el usuario
+   * ha visitado (focus + blur) al menos una vez. Esto evita que los
+   * mensajes rojos aparezcan en campos que el usuario ni ha tocado.
+   *
+   * WCAG 2.2 — Criterio 3.3.1 (Nivel A): Los errores se identifican
+   * con texto descriptivo cuando el usuario los crea, no antes.
    */
-  const nombreInput  = document.getElementById('destinatario-nombre');
-  const emailInput   = document.getElementById('destinatario-email');
-  const mensajeInput = document.getElementById('mensaje-postal');
+  const nombreInput    = document.getElementById('destinatario-nombre');
+  const emailInput     = document.getElementById('destinatario-email');
+  const mensajeInput   = document.getElementById('mensaje-postal');
   const remitenteInput = document.getElementById('remitente-nombre');
 
-  if (nombreInput) {
-    nombreInput.addEventListener('blur', () => {
-      validateField(nombreInput, 'nombre-error', v => v.trim().length >= 2);
-    });
-    // Limpiar error al volver a escribir
-    nombreInput.addEventListener('input', () => {
-      if (nombreInput.value.trim().length >= 2) setError(nombreInput, 'nombre-error', false);
-    });
-  }
+  // Set de IDs de campos que el usuario ya ha visitado al menos una vez
+  const touched = new Set();
 
-  if (emailInput) {
-    emailInput.addEventListener('blur', () => {
-      validateField(emailInput, 'email-error', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
+  function attachFieldValidation(input, errorId, validationFn) {
+    if (!input) return;
+
+    // Blur: marcar como tocado y validar solo si el campo tiene contenido
+    // o ya fue marcado como tocado antes
+    input.addEventListener('blur', () => {
+      touched.add(input.id);
+      // Solo mostrar error si el campo está vacío/inválido al salir
+      validateField(input, errorId, validationFn);
     });
-    emailInput.addEventListener('input', () => {
-      if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
-        setError(emailInput, 'email-error', false);
+
+    // Input: limpiar error si ya era válido (solo en campos ya tocados)
+    input.addEventListener('input', () => {
+      if (touched.has(input.id) && validationFn(input.value)) {
+        setError(input, errorId, false);
       }
     });
   }
 
-  if (mensajeInput) {
-    mensajeInput.addEventListener('blur', () => {
-      validateField(mensajeInput, 'mensaje-error', v => v.trim().length >= 5);
-    });
-    mensajeInput.addEventListener('input', () => {
-      if (mensajeInput.value.trim().length >= 5) setError(mensajeInput, 'mensaje-error', false);
-    });
-  }
-
-  if (remitenteInput) {
-    remitenteInput.addEventListener('blur', () => {
-      validateField(remitenteInput, 'remitente-error', v => v.trim().length >= 2);
-    });
-    remitenteInput.addEventListener('input', () => {
-      if (remitenteInput.value.trim().length >= 2) setError(remitenteInput, 'remitente-error', false);
-    });
-  }
+  attachFieldValidation(nombreInput,    'nombre-error',    v => v.trim().length >= 2);
+  attachFieldValidation(emailInput,     'email-error',     v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
+  attachFieldValidation(mensajeInput,   'mensaje-error',   v => v.trim().length >= 5);
+  attachFieldValidation(remitenteInput, 'remitente-error', v => v.trim().length >= 2);
 
   /* --- Envío del formulario --- */
   form.addEventListener('submit', function(event) {
-    // Siempre prevenir el envío nativo (demo)
     event.preventDefault();
 
-    // Colectar errores
-    const errors = [];
+    // Al enviar: marcar todos como tocados y forzar validación completa
+    [nombreInput, emailInput, mensajeInput, remitenteInput].forEach(el => {
+      if (el) touched.add(el.id);
+    });
 
-    const imageOk    = validateImageSelection();
-    const nombreOk   = nombreInput  ? validateField(nombreInput,   'nombre-error',    v => v.trim().length >= 2) : true;
-    const emailOk    = emailInput   ? validateField(emailInput,    'email-error',     v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) : true;
-    const mensajeOk  = mensajeInput ? validateField(mensajeInput,  'mensaje-error',   v => v.trim().length >= 5) : true;
+    const errors = [];
+    const imageOk     = validateImageSelection();
+    const nombreOk    = nombreInput    ? validateField(nombreInput,    'nombre-error',    v => v.trim().length >= 2) : true;
+    const emailOk     = emailInput     ? validateField(emailInput,     'email-error',     v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) : true;
+    const mensajeOk   = mensajeInput   ? validateField(mensajeInput,   'mensaje-error',   v => v.trim().length >= 5) : true;
     const remitenteOk = remitenteInput ? validateField(remitenteInput, 'remitente-error', v => v.trim().length >= 2) : true;
 
     if (!imageOk)     errors.push('imagen-fieldset');
@@ -321,8 +299,7 @@
     if (errors.length > 0) {
       /*
        * WCAG 2.2 — Criterio 2.4.3 (Nivel A): Orden del Foco
-       * Si hay errores, mover el foco al primer campo inválido
-       * para informar al usuario de teclado dónde está el problema.
+       * Mover el foco al primer campo inválido.
        */
       const firstErrorEl = document.getElementById(errors[0]);
       if (firstErrorEl) {
@@ -332,39 +309,28 @@
       return;
     }
 
-    /*
-     * Si la validación pasa: simular envío y mostrar mensaje de éxito.
-     * WCAG 2.2 — Criterio 4.1.3 (Nivel AA): El mensaje de estado
-     * tiene role="status" y aria-live="polite" en el HTML.
-     */
     simulateFormSubmit();
   });
 
   /**
-   * Simula el envío del formulario con un estado de carga
-   * y muestra el mensaje de éxito accesible.
+   * Simula el envío: muestra estado de carga y luego el mensaje de éxito.
    */
   function simulateFormSubmit() {
     const submitBtn = document.getElementById('submit-postal');
-
-    // Estado de carga del botón (accesible)
     submitBtn.disabled = true;
     submitBtn.setAttribute('aria-busy', 'true');
     submitBtn.textContent = 'Enviando postal…';
 
-    // Simular latencia de red
     setTimeout(() => {
-      // Ocultar el formulario y mostrar el éxito
+      // Usar hidden (el CSS tiene [hidden]{display:none!important})
       form.querySelectorAll('.fieldset, .form-submit').forEach(el => {
-        el.style.display = 'none';
+        el.hidden = true;
       });
 
       success.hidden = false;
 
       /*
-       * WCAG 2.2 — Criterio 2.4.3 (Nivel A): Orden del Foco
-       * Mover el foco al mensaje de éxito para que los usuarios
-       * de teclado sepan que el proceso ha concluido.
+       * WCAG 2.2 — Criterio 2.4.3 (Nivel A): Mover foco al éxito.
        */
       success.setAttribute('tabindex', '-1');
       success.focus();
