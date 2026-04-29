@@ -387,7 +387,6 @@
       const toggle = document.getElementById('nav-toggle');
       if (nav && nav.classList.contains('is-open')) {
         nav.classList.remove('is-open');
-        nav.setAttribute('aria-hidden', 'true');
         if (toggle) toggle.setAttribute('aria-expanded', 'false');
       }
 
