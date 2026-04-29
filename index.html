@@ -230,19 +230,19 @@
         <!-- Datos destacados (estadísticas) -->
         <div class="stats-bar" role="list" aria-label="Datos destacados de Santorini">
           <div class="stat" role="listitem">
-            <span class="stat__number" aria-label="Tres mil quinientos años de historia">3.500</span>
+            <span class="stat__number" role="img" aria-label="Tres mil quinientos años de historia">3.500</span>
             <span class="stat__label">Años de Historia</span>
           </div>
           <div class="stat" role="listitem">
-            <span class="stat__number" aria-label="Diez playas únicas">10+</span>
+            <span class="stat__number" role="img" aria-label="Diez playas únicas">10+</span>
             <span class="stat__label">Playas Únicas</span>
           </div>
           <div class="stat" role="listitem">
-            <span class="stat__number" aria-label="Caldera de doce kilómetros">12 km</span>
+            <span class="stat__number" role="img" aria-label="Caldera de doce kilómetros">12 km</span>
             <span class="stat__label">Caldera Volcánica</span>
           </div>
           <div class="stat" role="listitem">
-            <span class="stat__number" aria-label="Doscientos veinticinco días de sol al año">225</span>
+            <span class="stat__number" role="img" aria-label="Doscientos veinticinco días de sol al año">225</span>
             <span class="stat__label">Días de Sol/Año</span>
           </div>
         </div>
@@ -270,7 +270,7 @@
           listas que usan CSS display:grid (algunos navegadores
           eliminan la semántica de lista con ciertos estilos).
         -->
-        <ul class="gallery-grid" role="list" aria-label="Galería de fotografías de Santorini">
+        <ul class="gallery-grid" aria-label="Galería de fotografías de Santorini">
 
           <li class="gallery-item gallery-item--feature">
             <figure>
@@ -688,8 +688,7 @@
                   value="atardecer"
                   class="postcard-radio"
                   required
-                  aria-required="true"
-                />
+                >
                 <!--
                   WCAG 2.2 — Criterio 1.3.1: El <label> está explícitamente
                   vinculado al <input> mediante el atributo for="postal-atardecer".
@@ -717,8 +716,7 @@
                   name="imagen-postal"
                   value="iglesia"
                   class="postcard-radio"
-                  aria-required="true"
-                />
+                >
                 <label for="postal-iglesia" class="postcard-label">
                   <img
                     src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=300&q=80"
@@ -740,8 +738,7 @@
                   name="imagen-postal"
                   value="playa-roja"
                   class="postcard-radio"
-                  aria-required="true"
-                />
+                >
                 <label for="postal-playa" class="postcard-label">
                   <img
                     src="https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?w=300&q=80"
@@ -763,8 +760,7 @@
                   name="imagen-postal"
                   value="callejon"
                   class="postcard-radio"
-                  aria-required="true"
-                />
+                >
                 <label for="postal-callejon" class="postcard-label">
                   <img
                     src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=300&q=80"
@@ -820,10 +816,9 @@
                   class="form-input"
                   autocomplete="name"
                   required
-                  aria-required="true"
                   aria-describedby="nombre-error"
                   placeholder="Ej. María García López"
-                />
+                >
                 <div id="nombre-error" class="field-error" role="alert" aria-live="assertive" hidden>
                   <span aria-hidden="true">⚠</span>
                   El nombre del destinatario es obligatorio.
@@ -843,10 +838,9 @@
                   class="form-input"
                   autocomplete="email"
                   required
-                  aria-required="true"
                   aria-describedby="email-error email-hint"
                   placeholder="ejemplo@correo.com"
-                />
+                >
                 <p id="email-hint" class="field-hint">La postal se enviará a este correo electrónico.</p>
                 <div id="email-error" class="field-error" role="alert" aria-live="assertive" hidden>
                   <span aria-hidden="true">⚠</span>
@@ -873,7 +867,6 @@
                 rows="4"
                 maxlength="300"
                 required
-                aria-required="true"
                 aria-describedby="mensaje-error mensaje-contador"
                 placeholder="Escribe tu mensaje aquí... (máximo 300 caracteres)"
               ></textarea>
@@ -917,10 +910,9 @@
                   class="form-input"
                   autocomplete="given-name"
                   required
-                  aria-required="true"
                   aria-describedby="remitente-error"
                   placeholder="Tu nombre"
-                />
+                >
                 <div id="remitente-error" class="field-error" role="alert" aria-live="assertive" hidden>
                   <span aria-hidden="true">⚠</span>
                   Tu nombre es obligatorio para identificar la postal.
@@ -982,7 +974,7 @@
        FOOTER
        WCAG 2.2 — landmark <footer> con role="contentinfo"
        ====================================================== -->
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="container">
 
       <div class="footer-grid">
@@ -997,7 +989,7 @@
 
         <nav aria-label="Navegación del pie de página">
           <h3 class="footer-heading">Explorar</h3>
-          <ul class="footer-list" role="list">
+          <ul class="footer-list">
             <li><a href="#sobre-santorini" class="footer-link">Sobre Santorini</a></li>
             <li><a href="#galeria" class="footer-link">Galería</a></li>
             <li><a href="#multimedia" class="footer-link">Multimedia</a></li>
@@ -1009,9 +1001,9 @@
           <h3 class="footer-heading">Información</h3>
           <address class="footer-address">
             <p>
-              <span aria-label="Ubicación">Santorini (Thera)</span><br />
+              <span role="img" aria-label="Ubicación">Santorini (Thera)</span><br />
               <span>Cicládas, Grecia</span><br />
-              <span aria-label="Huso horario">UTC+2 (CEST en verano)</span>
+              <span role="img" aria-label="Huso horario">UTC+2 (CEST en verano)</span>
             </p>
             <p>
               <a href="mailto:info@turismo-santorini.gr" class="footer-link">
