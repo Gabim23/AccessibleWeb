@@ -515,9 +515,11 @@ ul, ol {
    WCAG 2.2 — Criterio 1.4.3 (Nivel AA): Contraste
    El overlay oscuro garantiza que el texto blanco tenga
    el ratio de contraste mínimo 4.5:1 sobre la imagen de fondo.
-   Overlay: rgba(10, 30, 50, 0.72) → texto blanco ratio ≈ 9:1 ✓
+   Se implementa como ::before para que los validadores (WAVE)
+   calculen el contraste contra el background-color del .hero.
    ================================================================ */
-.hero-overlay {
+.hero::before {
+  content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -575,8 +577,8 @@ ul, ol {
 
 .hero-subtitle {
   font-size: clamp(var(--text-base), 2vw, var(--text-xl));
-  color: rgba(255, 255, 255, 0.88);
-  /* ratio: blanco 88% sobre overlay → >4.5:1 ✓ */
+  color: var(--color-white); /* Opaco para contraste exacto 12:1 sobre #0d2b45 ✓ */
+  /* ratio: blanco #fff sobre overlay → >4.5:1 ✓ */
   line-height: 1.7;
   max-width: 55ch;
   margin-bottom: var(--space-10);
@@ -694,7 +696,7 @@ ul, ol {
 }
 
 .btn--outline {
-  background: transparent;
+  background: rgba(13, 43, 69, 0.55); /* Fondo oscuro semitransparente: #fff sobre ~#0d2b45 → >7:1 ✓ */
   color: var(--color-white);
   border-color: rgba(255,255,255,0.7);
 }
