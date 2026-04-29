@@ -83,9 +83,30 @@
     }
   });
 
-  // Estado inicial: menú oculto para lectores de pantalla
-  nav.setAttribute('aria-hidden', 'true');
-  navLinks.forEach(link => link.setAttribute('tabindex', '-1'));
+  /**
+   * Solo ocultar el nav cuando el botón hamburguesa es visible (móvil).
+   * En escritorio el nav siempre debe ser accesible.
+   */
+  function applyMobileState() {
+    const isMobile = window.getComputedStyle(toggle).display !== 'none';
+    if (isMobile) {
+      // En móvil: menú empieza cerrado
+      nav.setAttribute('aria-hidden', 'true');
+      navLinks.forEach(link => link.setAttribute('tabindex', '-1'));
+    } else {
+      // En escritorio: nav siempre visible y accesible
+      nav.removeAttribute('aria-hidden');
+      nav.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      navLinks.forEach(link => link.removeAttribute('tabindex'));
+    }
+  }
+
+  // Estado inicial
+  applyMobileState();
+
+  // Reaccionar a cambios de tamaño de ventana
+  window.addEventListener('resize', applyMobileState);
 })();
 
 
