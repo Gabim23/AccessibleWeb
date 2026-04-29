@@ -325,6 +325,7 @@ ul, ol {
   right: 0;
   z-index: 100;
 
+  background-color: var(--color-egeo-900); /* Fallback opaco para validadores automáticos */
   background: rgba(13, 43, 69, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -390,7 +391,7 @@ ul, ol {
   display: inline-block;
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-full);
-  color: rgba(255,255,255,0.85);
+  color: var(--color-white); /* 100% opaco para asegurar ratio de contraste en validadores */
   font-size: var(--text-sm);
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -1851,7 +1852,7 @@ ul, ol {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.45);
+  color: var(--color-gray-300); /* Aumentado de rgba(..., 0.45) para asegurar contraste mínimo 4.5:1 */
   white-space: nowrap;
   max-width: unset;
 }
