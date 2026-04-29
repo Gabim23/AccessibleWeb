@@ -498,6 +498,7 @@ ul, ol {
   align-items: center;
 
   /* Imagen de fondo: decorativa (el contenido real es el texto) */
+  background-color: var(--color-egeo-900); /* Fallback opaco */
   background-image: url('https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1600&q=85');
   background-size: cover;
   background-position: center 40%;
