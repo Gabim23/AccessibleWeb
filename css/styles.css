@@ -325,18 +325,17 @@ ul, ol {
   right: 0;
   z-index: 100;
 
-  background-color: var(--color-egeo-900); /* Fallback opaco para validadores automáticos */
-  background: rgba(13, 43, 69, 0.85);
+  background-color: var(--color-egeo-900);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(78, 184, 224, 0.15);
 
-  transition: background var(--transition-base),
+  transition: background-color var(--transition-base),
               box-shadow var(--transition-base);
 }
 
 .site-header.scrolled {
-  background: rgba(13, 43, 69, 0.97);
+  background-color: var(--color-egeo-900);
   box-shadow: var(--shadow-md);
 }
 
@@ -497,17 +496,13 @@ ul, ol {
   display: flex;
   align-items: center;
 
-  /* Imagen de fondo: decorativa (el contenido real es el texto) */
-  background-color: var(--color-egeo-900); /* Fallback opaco */
-  background-image: url('https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1600&q=85');
-  background-size: cover;
-  background-position: center 40%;
-  background-attachment: fixed;
+  /* Solo color opaco; la imagen va en ::before */
+  background-color: var(--color-egeo-900);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero {
-    background-attachment: scroll; /* Parallax deshabilitado si el usuario lo prefiere */
+  .hero::before {
+    background-attachment: scroll, scroll;
   }
 }
 
@@ -522,12 +517,17 @@ ul, ol {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    160deg,
-    rgba(10, 30, 50, 0.78) 0%,
-    rgba(10, 30, 50, 0.55) 50%,
-    rgba(15, 50, 80, 0.70) 100%
-  );
+  background-image:
+    linear-gradient(
+      160deg,
+      rgba(10, 30, 50, 0.78) 0%,
+      rgba(10, 30, 50, 0.55) 50%,
+      rgba(15, 50, 80, 0.70) 100%
+    ),
+    url('https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1600&q=85');
+  background-size: 100%, cover;
+  background-position: 0 0, center 40%;
+  background-attachment: scroll, fixed;
   z-index: 0;
 }
 
@@ -541,11 +541,11 @@ ul, ol {
 .hero-eyebrow {
   display: inline-block;
   padding: var(--space-1) var(--space-4);
-  background: rgba(78, 184, 224, 0.2);
+  background-color: #0e2d47; /* Opaco para contraste computable */
   border: 1px solid rgba(78, 184, 224, 0.5);
   border-radius: var(--radius-full);
   color: var(--color-egeo-300);
-  /* WCAG 2.2 Criterio 1.4.3: #4eb8e0 sobre overlay oscuro → ratio >4.5:1 ✓ */
+  /* WCAG 2.2 Criterio 1.4.3: #4eb8e0 sobre #0e2d47 → ratio >4.5:1 ✓ */
   font-size: var(--text-sm);
   font-weight: 500;
   letter-spacing: 0.15em;
@@ -696,7 +696,7 @@ ul, ol {
 }
 
 .btn--outline {
-  background: rgba(13, 43, 69, 0.55); /* Fondo oscuro semitransparente: #fff sobre ~#0d2b45 → >7:1 ✓ */
+  background-color: var(--color-egeo-900); /* Opaco: #fff sobre #0d2b45 → 12.6:1 ✓ */
   color: var(--color-white);
   border-color: rgba(255,255,255,0.7);
 }
