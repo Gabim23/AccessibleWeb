@@ -39,10 +39,9 @@
 
     // Muestra/oculta el menú
     nav.classList.toggle('is-open', open);
-    nav.setAttribute('aria-hidden', open ? 'false' : 'true');
 
-    // WCAG 2.2 — Criterio 4.1.2: Cuando aria-hidden="true",
-    // los elementos focalizables dentro deben ser inaccesibles.
+    // WCAG 2.2 — Criterio 4.1.2:
+    // los elementos focalizables dentro deben ser inaccesibles cuando el menú está oculto.
     navLinks.forEach(link => {
       link.setAttribute('tabindex', open ? '0' : '-1');
     });
@@ -91,11 +90,9 @@
     const isMobile = window.getComputedStyle(toggle).display !== 'none';
     if (isMobile) {
       // En móvil: menú empieza cerrado
-      nav.setAttribute('aria-hidden', 'true');
       navLinks.forEach(link => link.setAttribute('tabindex', '-1'));
     } else {
       // En escritorio: nav siempre visible y accesible
-      nav.removeAttribute('aria-hidden');
       nav.classList.remove('is-open');
       toggle.setAttribute('aria-expanded', 'false');
       navLinks.forEach(link => link.removeAttribute('tabindex'));

@@ -1686,7 +1686,7 @@ ul, ol {
      del flujo de foco del teclado sin usar display:none
      que causaría problemas de animación.
      ================================================================ */
-  .main-nav[aria-hidden="true"] {
+  .main-nav:not(.is-open) {
     pointer-events: none;
     visibility: hidden;
   }
