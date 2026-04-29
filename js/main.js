@@ -40,6 +40,12 @@
     // Muestra/oculta el menú
     nav.classList.toggle('is-open', open);
     nav.setAttribute('aria-hidden', open ? 'false' : 'true');
+
+    // WCAG 2.2 — Criterio 4.1.2: Cuando aria-hidden="true",
+    // los elementos focalizables dentro deben ser inaccesibles.
+    navLinks.forEach(link => {
+      link.setAttribute('tabindex', open ? '0' : '-1');
+    });
   }
 
   // Click en el botón hamburguesa
@@ -79,6 +85,7 @@
 
   // Estado inicial: menú oculto para lectores de pantalla
   nav.setAttribute('aria-hidden', 'true');
+  navLinks.forEach(link => link.setAttribute('tabindex', '-1'));
 })();
 
 
