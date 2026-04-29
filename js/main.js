@@ -33,17 +33,24 @@
    * Abre o cierra el menú móvil de forma accesible.
    */
   function toggleMenu(open) {
-    // Actualiza el estado ARIA del botón
+    // 1. Actualiza el botón (Correcto)
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     toggle.setAttribute('aria-label', open ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
 
-    // Muestra/oculta el menú
+    // 2. Activa la clase CSS (Que ahora tiene visibility: hidden)
     nav.classList.toggle('is-open', open);
 
-    // WCAG 2.2 — Criterio 4.1.2:
-    // los elementos focalizables dentro deben ser inaccesibles cuando el menú está oculto.
+    // 3. Sincroniza aria-hidden para lectores de pantalla
+    // Si está abierto, aria-hidden es false. Si está cerrado, es true.
+    nav.setAttribute('aria-hidden', (!open).toString());
+
+    // 4. Gestión manual de tabindex (Doble seguridad)
     navLinks.forEach(link => {
-      link.setAttribute('tabindex', open ? '0' : '-1');
+      if (open) {
+        link.removeAttribute('tabindex');
+      } else {
+        link.setAttribute('tabindex', '-1');
+      }
     });
   }
 
@@ -90,10 +97,12 @@
     const isMobile = window.getComputedStyle(toggle).display !== 'none';
     if (isMobile) {
       // En móvil: menú empieza cerrado
+      nav.setAttribute('aria-hidden', 'true');
       navLinks.forEach(link => link.setAttribute('tabindex', '-1'));
     } else {
       // En escritorio: nav siempre visible y accesible
       nav.classList.remove('is-open');
+      nav.removeAttribute('aria-hidden');
       toggle.setAttribute('aria-expanded', 'false');
       navLinks.forEach(link => link.removeAttribute('tabindex'));
     }

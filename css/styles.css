@@ -1672,11 +1672,13 @@ ul, ol {
     border-top: 1px solid rgba(78,184,224,0.15);
     border-bottom: 1px solid rgba(78,184,224,0.15);
 
-    /* Estado oculto */
+    /* Estado oculto: Crucial para accesibilidad */
     opacity: 0;
-    pointer-events: none;
     transform: translateY(-8px);
-    transition: opacity var(--transition-base), transform var(--transition-base);
+    transition: opacity var(--transition-base), transform var(--transition-base), visibility var(--transition-base);
+    
+    visibility: hidden;
+    pointer-events: none;
   }
 
   /* ================================================================
@@ -1686,10 +1688,7 @@ ul, ol {
      del flujo de foco del teclado sin usar display:none
      que causaría problemas de animación.
      ================================================================ */
-  .main-nav:not(.is-open) {
-    pointer-events: none;
-    visibility: hidden;
-  }
+  /* Eliminado el :not(.is-open) porque el estado por defecto ya es oculto */
 
   .main-nav.is-open {
     opacity: 1;
