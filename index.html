@@ -974,56 +974,56 @@
        WCAG 2.2 — landmark <footer> con role="contentinfo"
        ====================================================== -->
   <footer class="site-footer">
-    <div class="container">
+  <div class="container">
 
-      <div class="footer-grid">
+    <div class="footer-grid">
 
-        <div class="footer-brand">
-          <a href="#" class="logo" aria-label="Santorini - Inicio">
-            <span class="logo-icon" aria-hidden="true">✦</span>
-            <span class="logo-text">Santorini</span>
-          </a>
-          <p class="footer-tagline">La Joya del Egeo, Grecia</p>
-        </div>
+      <div class="footer-brand">
+        <a href="#" class="logo" aria-label="Santorini - Inicio">
+          <span class="logo-icon" aria-hidden="true">✦</span>
+          <span class="logo-text">Santorini</span>
+        </a>
+        <p class="footer-tagline">La Joya del Egeo, Grecia</p>
+      </div>
 
-        <nav aria-label="Navegación del pie de página">
-          <h3 class="footer-heading">Explorar</h3>
-          <ul class="footer-list">
-            <li><a href="#sobre-santorini" class="footer-link">Sobre Santorini</a></li>
-            <li><a href="#galeria" class="footer-link">Galería</a></li>
-            <li><a href="#multimedia" class="footer-link">Multimedia</a></li>
-            <li><a href="#gastronomia" class="footer-link">Gastronomía</a></li>
-          </ul>
-        </nav>
+      <nav aria-label="Navegación del pie de página">
+        <h3 class="footer-heading">Explorar</h3>
+        <ul class="footer-list">
+          <li><a href="#sobre-santorini" class="footer-link">Sobre Santorini</a></li>
+          <li><a href="#galeria" class="footer-link">Galería</a></li>
+          <li><a href="#multimedia" class="footer-link">Multimedia</a></li>
+          <li><a href="#gastronomia" class="footer-link">Gastronomía</a></li>
+        </ul>
+      </nav>
 
-        <div class="footer-info">
-          <h3 class="footer-heading">Información</h3>
-          <address class="footer-address">
-            <p>
-              <span role="img" aria-label="Ubicación">Santorini (Thera)</span><br />
-              <span>Cicládas, Grecia</span><br />
-              <span role="img" aria-label="Huso horario">UTC+2 (CEST en verano)</span>
-            </p>
-            <p>
-              <a href="mailto:info@turismo-santorini.gr" class="footer-link">
-                info@turismo-santorini.gr
-              </a>
-            </p>
-          </address>
-        </div>
-
-        <div class="footer-accessibility">
-          <h3 class="footer-heading">Accesibilidad</h3>
-          <p class="footer-text">
-            Este sitio cumple con las pautas
-            <abbr title="Web Content Accessibility Guidelines versión 2.2, Nivel AA">WCAG 2.2</abbr>
-            con nivel de conformidad <strong style="color:var(--color-gold-300)">AA</strong>.
+      <div class="footer-info">
+        <h3 class="footer-heading">Información</h3>
+        <address class="footer-address">
+          <p>
+            <span role="img" aria-label="Ubicación">Santorini (Thera)</span><br />
+            <span>Cicládas, Grecia</span><br />
+            <span role="img" aria-label="Huso horario">UTC+2 (CEST en verano)</span>
           </p>
-          <!--
-            REQUISITO PRÁCTICO: Badge oficial W3C de conformidad WCAG 2.2 AA.
-            Enlaza a la página de conformidad del W3C y muestra el logotipo oficial.
-            El atributo alt describe el significado del badge.
-          -->
+          <p>
+            <a href="mailto:info@turismo-santorini.gr" class="footer-link">
+              info@turismo-santorini.gr
+            </a>
+          </p>
+        </address>
+      </div>
+
+      <div class="footer-accessibility">
+        <h3 class="footer-heading">Accesibilidad</h3>
+        <p class="footer-text">
+          Este sitio cumple con las pautas
+          <abbr title="Web Content Accessibility Guidelines versión 2.2, Nivel AA">WCAG 2.2</abbr>
+          con nivel de conformidad <strong style="color:var(--color-gold-300)">AA</strong>.
+        </p>
+        
+        <!-- Contenedor para alinear los sellos -->
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
+          
+          <!-- Badge oficial W3C WCAG 2.2 AA -->
           <a
             href="https://www.w3.org/WAI/WCAG2AA-Conformance"
             title="Explicación de la Conformidad de Nivel AA de las WCAG 2.2"
@@ -1033,49 +1033,62 @@
             class="wcag-badge-link"
           >
             <img
-              src="https://www.w3.org/WAI/wcag2AA-blue.png"
+              src="https://www.w3.org/WAI/WCAG22/wcag2.2AA.png"
               alt="Nivel AA de conformidad con las Pautas de Accesibilidad para el Contenido Web 2.2"
               width="88"
               height="31"
-              style="background-color: white; padding: 2px; border-radius: 4px; display: inline-block; margin-bottom: 8px;"
+              style="background-color: white; padding: 2px; border-radius: 4px; display: block; border: 0;"
             />
           </a>
-          <p>
-              <a href="https://jigsaw.w3.org/css-validator/check/referer">
-                  <img style="border:0; width:88px; height:31px; background-color: white; padding: 2px; border-radius: 4px;"
-                      src="https://jigsaw.w3.org/css-validator/images/vcss"
-                      alt="¡CSS Válido!" />
-              </a>
-          </p>
+
+          <!-- Badge CSS Válido -->
+          <a 
+            href="https://jigsaw.w3.org/css-validator/check/referer"
+            title="Verificación de hojas de estilo CSS (Cascading Style Sheets)"
+            rel="noopener noreferrer"
+            target="_blank"
+            aria-label="Validador CSS del W3C (se abre en nueva pestaña)"
+            class="wcag-badge-link"
+          >
+            <img 
+              src="https://jigsaw.w3.org/css-validator/images/vcss"
+              alt="Certificación de ¡CSS Válido! otorgada por el W3C"
+              width="88"
+              height="31"
+              style="background-color: white; padding: 2px; border-radius: 4px; display: block; border: 0;" 
+            />
+          </a>
+          
         </div>
-
-      </div>
-
-      <div class="footer-bottom">
-        <p class="footer-copy">
-          <small>
-            &copy; <time datetime="2025">2025</time> Turismo Santorini.
-            Contenido con fines educativos. Imágenes vía
-            <a href="https://unsplash.com" rel="noopener noreferrer" target="_blank" class="footer-link" aria-label="Visitar Unsplash (se abre en nueva pestaña)">
-              Unsplash
-            </a>.
-          </small>
-        </p>
-        <!-- Validadores utilizados (requeridos por la práctica) -->
-        <nav aria-label="Herramientas de validación utilizadas" class="validators-nav">
-          <p class="validators-label">Validado con:</p>
-          <ul class="validators-list" role="list">
-            <li><a href="https://validator.w3.org" class="validator-link" rel="noopener noreferrer" target="_blank" aria-label="W3C HTML Validator (nueva pestaña)">W3C HTML</a></li>
-            <li><a href="https://jigsaw.w3.org/css-validator/" class="validator-link" rel="noopener noreferrer" target="_blank" aria-label="W3C CSS Validator (nueva pestaña)">W3C CSS</a></li>
-            <li><a href="https://wave.webaim.org" class="validator-link" rel="noopener noreferrer" target="_blank" aria-label="WAVE Accessibility Evaluator (nueva pestaña)">WAVE</a></li>
-            <li><a href="https://www.tawdis.net" class="validator-link" rel="noopener noreferrer" target="_blank" aria-label="TAW Validador de Accesibilidad (nueva pestaña)">TAW</a></li>
-            <li><a href="https://www.achecker.ca" class="validator-link" rel="noopener noreferrer" target="_blank" aria-label="AChecker Accessibility Checker (nueva pestaña)">AChecker</a></li>
-          </ul>
-        </nav>
       </div>
 
     </div>
-  </footer>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        <small>
+          &copy; <time datetime="2025">2025</time> Turismo Santorini.
+          Contenido con fines educativos. Imágenes vía
+          <a href="https://unsplash.com" rel="noopener noreferrer" target="_blank" class="footer-link" aria-label="Visitar Unsplash (se abre en nueva pestaña)">
+            Unsplash
+          </a>.
+        </small>
+      </p>
+      <!-- Validadores utilizados (requeridos por la práctica) -->
+      <nav aria-label="Herramientas de validación utilizadas" class="validators-nav">
+        <p class="validators-label">Validado con:</p>
+          <ul class="validators-list" role="list">
+          <li><a href="https://validator.w3.org" class="validator-link" rel="noopener noreferrer" target="_blank" aria-label="W3C HTML Validator (nueva pestaña)">W3C HTML</a></li>
+          <li><a href="https://jigsaw.w3.org/css-validator/" class="validator-link" rel="noopener noreferrer" target="_blank" aria-label="W3C CSS Validator (nueva pestaña)">W3C CSS</a></li>
+          <li><a href="https://wave.webaim.org" class="validator-link" rel="noopener noreferrer" target="_blank" aria-label="WAVE Accessibility Evaluator (nueva pestaña)">WAVE</a></li>
+          <li><a href="https://www.tawdis.net" class="validator-link" rel="noopener noreferrer" target="_blank" aria-label="TAW Validador de Accesibilidad (nueva pestaña)">TAW</a></li>
+          <li><a href="https://www.achecker.ca" class="validator-link" rel="noopener noreferrer" target="_blank" aria-label="AChecker Accessibility Checker (nueva pestaña)">AChecker</a></li>
+        </ul>
+      </nav>
+    </div>
+
+  </div>
+</footer>
 
   <script src="js/main.js"></script>
 </body>
