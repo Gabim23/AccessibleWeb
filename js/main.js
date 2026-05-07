@@ -287,8 +287,7 @@
   function attachFieldValidation(input, errorId, validationFn) {
     if (!input) return;
 
-    // Blur: marcar como tocado y validar solo si el campo tiene contenido
-    // o ya fue marcado como tocado antes
+    // Blur: marcar como tocado y validar solo si el campo tiene contenido o ya fue marcado como tocado antes
     input.addEventListener('blur', () => {
       touched.add(input.id);
       // Solo mostrar error si el campo está vacío/inválido al salir
@@ -308,7 +307,7 @@
   attachFieldValidation(mensajeInput,   'mensaje-error',   v => v.trim().length >= 5);
   attachFieldValidation(remitenteInput, 'remitente-error', v => v.trim().length >= 2);
 
-  /* --- Envío del formulario --- */
+  //Envío de formulario
   form.addEventListener('submit', function(event) {
     event.preventDefault();
 

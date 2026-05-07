@@ -933,7 +933,7 @@ ul, ol {
   right: 0;
   padding: var(--space-5) var(--space-4) var(--space-4);
   background: linear-gradient(transparent, rgba(0,0,0,0.75));
-  color: var(--color-white);
+  color: var(--color-white);      
   font-size: var(--text-sm);
   font-style: italic;
   opacity: 0;
